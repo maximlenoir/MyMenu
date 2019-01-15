@@ -4,10 +4,12 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class OrderTest {
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
@@ -56,5 +58,20 @@ class OrderTest {
         this.order.displaySelectedMenu(-6);
 
         assertEquals("Vous n'avez pas choisi de menu parmi les choix proposés\n", this.outContent.toString().replace("\r\n", "\n"));
+    }
+
+    @Test
+    void Given_ChickenInStandardInput_When_RunMenu_Then_DisplayCorrectProcess() {
+        String comparison = "Vous avez choisi comme menu : Poulet\n";
+
+        System.setIn(new ByteArrayInputStream("1\n".getBytes()));
+
+        this.order = new Order();
+        this.order.runMenu();
+
+        String output = this.outContent.toString().replace("\r\n", "\n");
+
+        assertTrue(output.endsWith(comparison));
+        assertTrue(output.length() > comparison.length());
     }
 }
