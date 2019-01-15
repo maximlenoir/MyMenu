@@ -18,6 +18,16 @@ class Order {
      * @param nbMenu The selected menu.
      */
     void displaySelectedMenu(int nbMenu) {
-        System.out.println("Vous avez choisi le menu " + nbMenu);
+        String selectedMenuSentence = "Vous avez choisi le menu : ";
+
+        if (nbMenu == 1) {
+            System.out.println(selectedMenuSentence + "Poulet");
+        } else if (nbMenu == 2) {
+            System.out.println(selectedMenuSentence + "Boeuf");
+        } else if (nbMenu == 3) {
+            System.out.println(selectedMenuSentence + "Végétarien");
+        } else {
+            System.out.println("Vous n'avez pas choisi de menu parmi les choix proposés");
+        }
     }
 }
