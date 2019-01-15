@@ -18,7 +18,7 @@ class Order {
      * @param nbMenu The selected menu.
      */
     void displaySelectedMenu(int nbMenu) {
-        String selectedMenuSentence = "Vous avez choisi le menu : ";
+        String selectedMenuSentence = "Vous avez choisi comme menu : ";
 
         switch (nbMenu) {
             case 1:
