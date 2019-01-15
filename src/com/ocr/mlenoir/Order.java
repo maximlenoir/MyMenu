@@ -20,14 +20,23 @@ class Order {
     void displaySelectedMenu(int nbMenu) {
         String selectedMenuSentence = "Vous avez choisi le menu : ";
 
-        if (nbMenu == 1) {
-            System.out.println(selectedMenuSentence + "Poulet");
-        } else if (nbMenu == 2) {
-            System.out.println(selectedMenuSentence + "Boeuf");
-        } else if (nbMenu == 3) {
-            System.out.println(selectedMenuSentence + "Végétarien");
-        } else {
-            System.out.println("Vous n'avez pas choisi de menu parmi les choix proposés");
+        switch (nbMenu) {
+            case 1:
+                System.out.println(selectedMenuSentence + "Poulet");
+
+                break;
+            case 2:
+                System.out.println(selectedMenuSentence + "Boeuf");
+
+                break;
+            case 3:
+                System.out.println(selectedMenuSentence + "Végétarien");
+
+                break;
+            default:
+                System.out.println("Vous n'avez pas choisi de menu parmi les choix proposés");
+
+                break;
         }
     }
 }
