@@ -27,21 +27,21 @@ class OrderTest {
     void Given_Chicken_When_DisplaySelectedMenu_Then_DisplayChickenSentence() {
         this.order.displaySelectedMenu(1);
 
-        assertEquals("Vous avez choisi le menu : Poulet\n", this.outContent.toString().replace("\r\n", "\n"));
+        assertEquals("Vous avez choisi comme menu : Poulet\n", this.outContent.toString().replace("\r\n", "\n"));
     }
 
     @Test
     void Given_Beef_When_DisplaySelectedMenu_Then_DisplayBeefSentence() {
         this.order.displaySelectedMenu(2);
 
-        assertEquals("Vous avez choisi le menu : Boeuf\n", this.outContent.toString().replace("\r\n", "\n"));
+        assertEquals("Vous avez choisi comme menu : Boeuf\n", this.outContent.toString().replace("\r\n", "\n"));
     }
 
     @Test
     void Given_Vegetarian_When_DisplaySelectedMenu_Then_DisplayVegetarianSentence() {
         this.order.displaySelectedMenu(3);
 
-        assertEquals("Vous avez choisi le menu : Végétarien\n", this.outContent.toString().replace("\r\n", "\n"));
+        assertEquals("Vous avez choisi comme menu : Végétarien\n", this.outContent.toString().replace("\r\n", "\n"));
     }
 
     @Test
