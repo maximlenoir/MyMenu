@@ -1,10 +1,26 @@
 package com.ocr.mlenoir;
 
+import java.util.Scanner;
+
 class Order {
+    /**
+     * Run asking process for a menu.
+     */
+    void runMenu() {
+        Scanner sc = new Scanner(System.in);
+        int nbMenu;
+
+        this.displayAvailableMenu();
+
+        nbMenu = sc.nextInt();
+
+        this.displaySelectedMenu(nbMenu);
+    }
+
     /**
      * Display all available menus in the restaurant.
      */
-    void displayAvailableMenu() {
+    private void displayAvailableMenu() {
         System.out.println("Choix menu");
         System.out.println("1 - Poulet");
         System.out.println("2 - Boeuf");
