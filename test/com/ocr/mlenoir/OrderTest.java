@@ -74,4 +74,67 @@ class OrderTest {
         assertTrue(output.endsWith(comparison));
         assertTrue(output.length() > comparison.length());
     }
+
+    @Test
+    void Given_AllSidesEnabledAndVegetables_When_DisplaySelectedSide_Then_DisplayVegetablesSentence() {
+        this.order.displaySelectedSide(true, 1);
+
+        String output = this.outContent.toString().replace("\r\n", "\n");
+
+        assertEquals("Vous avez choisi comme accompagnement : Légumes frais\n", output);
+    }
+
+    @Test
+    void Given_AllSidesEnabledAndFries_When_DisplaySelectedSide_Then_DisplayFriesSentence() {
+        this.order.displaySelectedSide(true, 2);
+
+        String output = this.outContent.toString().replace("\r\n", "\n");
+
+        assertEquals("Vous avez choisi comme accompagnement : Frites\n", output);
+    }
+
+    @Test
+    void Given_AllSidesEnabledAndRice_When_DisplaySelectedSide_Then_DisplayRiceSentence() {
+        this.order.displaySelectedSide(true, 3);
+
+        String output = this.outContent.toString().replace("\r\n", "\n");
+
+        assertEquals("Vous avez choisi comme accompagnement : Riz\n", output);
+    }
+
+    @Test
+    void Given_AllSidesEnabledAndBadValue_When_DisplaySelectedSide_Then_DisplayErrorSentence() {
+        this.order.displaySelectedSide(true, 5);
+
+        String output = this.outContent.toString().replace("\r\n", "\n");
+
+        assertEquals("Vous n'avez pas choisi d'accompagnement parmi les choix proposés\n", output);
+    }
+
+    @Test
+    void Given_AllSidesDisabledAndRice_When_DisplaySelectedSide_Then_DisplayRiceSentence() {
+        this.order.displaySelectedSide(false, 1);
+
+        String output = this.outContent.toString().replace("\r\n", "\n");
+
+        assertEquals("Vous avez choisi comme accompagnement : Riz\n", output);
+    }
+
+    @Test
+    void Given_AllSidesDisabledAndNoSide_When_DisplaySelectedSide_Then_DisplayNotRiceSentence() {
+        this.order.displaySelectedSide(false, 2);
+
+        String output = this.outContent.toString().replace("\r\n", "\n");
+
+        assertEquals("Vous avez choisi de ne pas prendre d'accompagnement\n", output);
+    }
+
+    @Test
+    void Given_AllSidesDisabledAndBadValue_When_DisplaySelectedSide_Then_DisplayErrorSentence() {
+        this.order.displaySelectedSide(false, 5);
+
+        String output = this.outContent.toString().replace("\r\n", "\n");
+
+        assertEquals("Vous n'avez pas choisi d'accompagnement parmi les choix proposés\n", output);
+    }
 }
