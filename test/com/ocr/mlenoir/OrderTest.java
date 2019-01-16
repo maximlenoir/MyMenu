@@ -228,4 +228,17 @@ class OrderTest {
         assertEquals("Vous avez choisi de ne pas prendre d'accompagnement", output[23]);
         assertEquals("Vous avez choisi comme boisson : Eau gazeuse", output[29]);
     }
+
+    @Test
+    void Given_BadMenu_When_RunMenu_Then_ReAskMenu() {
+        System.setIn(new ByteArrayInputStream("4\n1\n2\n3\n".getBytes()));
+
+        this.order = new Order();
+        this.order.runMenu();
+
+        String[] output = this.outContent.toString().replace("\r\n", "\n").split("\n");
+
+        assertEquals("Vous n'avez pas choisi de menu parmi les choix proposés", output[5]);
+        assertEquals("Vous avez choisi comme menu : Poulet", output[6]);
+    }
 }
