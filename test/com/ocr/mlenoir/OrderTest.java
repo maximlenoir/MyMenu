@@ -9,7 +9,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class OrderTest {
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
@@ -58,21 +57,6 @@ class OrderTest {
         this.order.displaySelectedMenu(-6);
 
         assertEquals("Vous n'avez pas choisi de menu parmi les choix proposés\n", this.outContent.toString().replace("\r\n", "\n"));
-    }
-
-    @Test
-    void Given_ChickenInStandardInput_When_RunMenu_Then_DisplayCorrectProcess() {
-        String comparison = "Vous avez choisi comme menu : Poulet\n";
-
-        System.setIn(new ByteArrayInputStream("1\n".getBytes()));
-
-        this.order = new Order();
-        this.order.runMenu();
-
-        String output = this.outContent.toString().replace("\r\n", "\n");
-
-        assertTrue(output.endsWith(comparison));
-        assertTrue(output.length() > comparison.length());
     }
 
     @Test
@@ -172,5 +156,46 @@ class OrderTest {
         String output = this.outContent.toString().replace("\r\n", "\n");
 
         assertEquals("Vous n'avez pas choisi de boisson parmi les choix proposés\n", output);
+    }
+
+    @Test
+    void Given_ChickenWithFriesAndSodaInStandardInput_When_RunMenu_Then_DisplayCorrectProcess() {
+        System.setIn(new ByteArrayInputStream("1\n2\n3\n".getBytes()));
+
+        this.order = new Order();
+        this.order.runMenu();
+
+        String[] output = this.outContent.toString().replace("\r\n", "\n").split("\n");
+
+        assertEquals("Vous avez choisi comme menu : Poulet", output[5]);
+        assertEquals("Vous avez choisi comme accompagnement : Frites", output[11]);
+        assertEquals("Vous avez choisi comme boisson : Soda", output[17]);
+    }
+
+    @Test
+    void Given_BeefWithVegetablesInStandardInput_When_RunMenu_Then_DisplayCorrectProcess() {
+        System.setIn(new ByteArrayInputStream("2\n1\n".getBytes()));
+
+        this.order = new Order();
+        this.order.runMenu();
+
+        String[] output = this.outContent.toString().replace("\r\n", "\n").split("\n");
+
+        assertEquals("Vous avez choisi comme menu : Boeuf", output[5]);
+        assertEquals("Vous avez choisi comme accompagnement : Légumes frais", output[11]);
+    }
+
+    @Test
+    void Given_VegetarianWithNoSideAndSparklingWaterInStandardInput_When_RunMenu_Then_DisplayCorrectProcess() {
+        System.setIn(new ByteArrayInputStream("3\n2\n2\n".getBytes()));
+
+        this.order = new Order();
+        this.order.runMenu();
+
+        String[] output = this.outContent.toString().replace("\r\n", "\n").split("\n");
+
+        assertEquals("Vous avez choisi comme menu : Végétarien", output[5]);
+        assertEquals("Vous avez choisi de ne pas prendre d'accompagnement", output[10]);
+        assertEquals("Vous avez choisi comme boisson : Eau gazeuse", output[16]);
     }
 }
