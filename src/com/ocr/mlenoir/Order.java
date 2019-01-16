@@ -277,4 +277,13 @@ class Order {
 
         this.askSomething("menu", menus);
     }
+
+    /**
+     * Display a question about side in the standard input, get response and display it.
+     *
+     * @param enableAllSides Enable display for all side or not.
+     */
+    void askSide(boolean enableAllSides) {
+
+    }
 }
