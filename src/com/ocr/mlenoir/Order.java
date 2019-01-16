@@ -237,6 +237,12 @@ class Order {
         }
     }
 
+    /**
+     * Display a question about a category in the standard input, get response and display it.
+     *
+     * @param category   The category of the question.
+     * @param responses  Available responses.
+     */
     void askSomething(String category, String[] responses) {
         int choice;
         boolean responseIsFalse = true;
