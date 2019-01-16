@@ -329,4 +329,16 @@ class OrderTest {
 
         assertEquals("Vous avez choisi comme accompagnement : Frites", output[5]);
     }
+
+    @Test
+    void Given_Water_When_AskAboutDrinks_Then_DisplayWaterChoice() {
+        System.setIn(new ByteArrayInputStream("1\n".getBytes()));
+
+        this.order = new Order();
+        this.order.askDrink();
+
+        String[] output = this.outContent.toString().replace("\r\n", "\n").split("\n");
+
+        assertEquals("Vous avez choisi comme boisson : Eau plate", output[5]);
+    }
 }
