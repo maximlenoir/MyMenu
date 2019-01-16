@@ -284,6 +284,12 @@ class Order {
      * @param enableAllSides Enable display for all side or not.
      */
     void askSide(boolean enableAllSides) {
-
+        if (enableAllSides) {
+            String[] sides = {"Légumes frais", "Frites", "Riz"};
+            this.askSomething("accompagnement", sides);
+        } else {
+            String[] sides = {"Riz", "Pas d'accompagnement"};
+            this.askSomething("accompagnement", sides);
+        }
     }
 }
