@@ -246,6 +246,7 @@ class Order {
     void askSomething(String category, String[] responses) {
         int choice;
         boolean responseIsFalse = true;
+        boolean isVowel = "aeiouy".contains(Character.toString(category.charAt(0)));
 
         System.out.println("Choix " + category);
 
@@ -263,7 +264,7 @@ class Order {
 
                 System.out.println("Vous avez choisi comme " + category + " : " + responses[choice - 1]);
             } else {
-                System.out.println("Vous n'avez pas choisi de " + category + " parmi les choix proposés");
+                System.out.println("Vous n'avez pas choisi d" + (isVowel ? "' " : "e ") + category + " parmi les choix proposés");
             }
         } while (responseIsFalse);
     }
