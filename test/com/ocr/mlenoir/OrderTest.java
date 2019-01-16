@@ -341,4 +341,27 @@ class OrderTest {
 
         assertEquals("Vous avez choisi comme boisson : Eau plate", output[5]);
     }
+
+    @Test
+    void Given_Response2_When_AskAboutCarWithThreeResponses_Then_ReturnNumber2() {
+        System.setIn(new ByteArrayInputStream("2\n".getBytes()));
+
+        this.order = new Order();
+
+        String[] responses = {"BMW", "Audi", "Mercedes"};
+
+        int choice = this.order.askSomething("voiture", responses);
+
+        assertEquals(2, choice);
+    }
+
+    @Test
+    void Given_Chicken_When_AskAboutMenus_Then_Return1() {
+        System.setIn(new ByteArrayInputStream("1\n".getBytes()));
+
+        this.order = new Order();
+        int choice = this.order.askMenu();
+
+        assertEquals(1, choice);
+    }
 }
