@@ -24,34 +24,26 @@ class Order {
      * Run asking process for a menu.
      */
     void runMenu() {
-        int selectedMenu;
+        int choice = this.askMenu();
 
-        this.displayAvailableMenu();
+        switch (choice) {
+            case 1:
+                this.askSide(true);
+                this.askDrink();
 
-        do {
-            selectedMenu = this.sc.nextInt();
+                break;
+            case 2:
+                this.askSide(true);
 
-            this.displaySelectedMenu(selectedMenu);
+                break;
+            case 3:
+                this.askSide(false);
+                this.askDrink();
 
-            switch (selectedMenu) {
-                case 1:
-                    this.askSide(true);
-                    this.askDrink();
-
-                    break;
-                case 2:
-                    this.askSide(true);
-
-                    break;
-                case 3:
-                    this.askSide(false);
-                    this.askDrink();
-
-                    break;
-                default:
-                    break;
-            }
-        } while (selectedMenu < 1 || selectedMenu > 3);
+                break;
+            default:
+                break;
+        }
     }
 
     /**
