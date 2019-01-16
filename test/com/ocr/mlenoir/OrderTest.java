@@ -198,4 +198,34 @@ class OrderTest {
         assertEquals("Vous avez choisi de ne pas prendre d'accompagnement", output[10]);
         assertEquals("Vous avez choisi comme boisson : Eau gazeuse", output[16]);
     }
+
+    @Test
+    void Given_OneMenu_ChickenWithFriesAndSoda_InStandardInput_When_RunMenus_Then_DisplayCorrectProcess() {
+        System.setIn(new ByteArrayInputStream("1\n1\n2\n3\n".getBytes()));
+
+        this.order = new Order();
+        this.order.runMenus();
+
+        String[] output = this.outContent.toString().replace("\r\n", "\n").split("\n");
+
+        assertEquals("Vous avez choisi comme menu : Poulet", output[6]);
+        assertEquals("Vous avez choisi comme accompagnement : Frites", output[12]);
+        assertEquals("Vous avez choisi comme boisson : Soda", output[18]);
+    }
+
+    @Test
+    void Given_TwoMen_BeefWithVegetables_VegetarianWithNoSideAndSparklingWater_InStandardInput_When_RunMenus_Then_DisplayCorrectProcess() {
+        System.setIn(new ByteArrayInputStream("2\n2\n1\n3\n2\n2\n".getBytes()));
+
+        this.order = new Order();
+        this.order.runMenus();
+
+        String[] output = this.outContent.toString().replace("\r\n", "\n").split("\n");
+
+        assertEquals("Vous avez choisi comme menu : Boeuf", output[6]);
+        assertEquals("Vous avez choisi comme accompagnement : Légumes frais", output[12]);
+        assertEquals("Vous avez choisi comme menu : Végétarien", output[18]);
+        assertEquals("Vous avez choisi de ne pas prendre d'accompagnement", output[23]);
+        assertEquals("Vous avez choisi comme boisson : Eau gazeuse", output[29]);
+    }
 }
