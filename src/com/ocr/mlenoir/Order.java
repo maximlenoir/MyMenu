@@ -8,13 +8,54 @@ class Order {
      */
     void runMenu() {
         Scanner sc = new Scanner(System.in);
-        int nbMenu;
+        int selectedMenu, selectedSide, selectedDrink;
 
         this.displayAvailableMenu();
 
-        nbMenu = sc.nextInt();
+        selectedMenu = sc.nextInt();
 
-        this.displaySelectedMenu(nbMenu);
+        this.displaySelectedMenu(selectedMenu);
+
+        switch (selectedMenu) {
+            case 1:
+                this.displayAvailableSide(true);
+
+                selectedSide = sc.nextInt();
+
+                this.displaySelectedSide(true, selectedSide);
+
+                this.displayAvailableDrink();
+
+                selectedDrink = sc.nextInt();
+
+                this.displaySelectedDrink(selectedDrink);
+
+                break;
+            case 2:
+                this.displayAvailableSide(true);
+
+                selectedSide = sc.nextInt();
+
+                this.displaySelectedSide(true, selectedSide);
+
+                break;
+            case 3:
+                this.displayAvailableSide(false);
+
+                selectedSide = sc.nextInt();
+
+                this.displaySelectedSide(false, selectedSide);
+
+                this.displayAvailableDrink();
+
+                selectedDrink = sc.nextInt();
+
+                this.displaySelectedDrink(selectedDrink);
+
+                break;
+            default:
+                break;
+        }
     }
 
     /**
@@ -31,12 +72,12 @@ class Order {
     /**
      * Display a selected menu.
      * 
-     * @param nbMenu The selected menu.
+     * @param selectedMenu The selected menu.
      */
-    void displaySelectedMenu(int nbMenu) {
+    void displaySelectedMenu(int selectedMenu) {
         String selectedMenuSentence = "Vous avez choisi comme menu : ";
 
-        switch (nbMenu) {
+        switch (selectedMenu) {
             case 1:
                 System.out.println(selectedMenuSentence + "Poulet");
 
