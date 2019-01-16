@@ -292,4 +292,11 @@ class Order {
             this.askSomething("accompagnement", sides);
         }
     }
+
+    /**
+     * Display a question about drink in the standard input, get response and display it.
+     */
+    void askDrink() {
+
+    }
 }
