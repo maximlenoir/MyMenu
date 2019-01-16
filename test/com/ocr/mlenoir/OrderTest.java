@@ -137,4 +137,40 @@ class OrderTest {
 
         assertEquals("Vous n'avez pas choisi d'accompagnement parmi les choix proposés\n", output);
     }
+
+    @Test
+    void Given_Water_When_DisplaySelectedDrink_Then_DisplayWaterSentence() {
+        this.order.displaySelectedDrink(1);
+
+        String output = this.outContent.toString().replace("\r\n", "\n");
+
+        assertEquals("Vous avez choisi comme boisson : Eau\n", output);
+    }
+
+    @Test
+    void Given_SparklingWater_When_DisplaySelectedDrink_Then_DisplaySparklingWaterSentence() {
+        this.order.displaySelectedDrink(2);
+
+        String output = this.outContent.toString().replace("\r\n", "\n");
+
+        assertEquals("Vous avez choisi comme boisson : Eau gazeuse\n", output);
+    }
+
+    @Test
+    void Given_Soda_When_DisplaySelectedDrink_Then_DisplaySodaSentence() {
+        this.order.displaySelectedDrink(3);
+
+        String output = this.outContent.toString().replace("\r\n", "\n");
+
+        assertEquals("Vous avez choisi comme boisson : Soda\n", output);
+    }
+
+    @Test
+    void Given_BadValue_When_DisplaySelectedDrink_Then_DisplayErrorSentence() {
+        this.order.displaySelectedDrink(5);
+
+        String output = this.outContent.toString().replace("\r\n", "\n");
+
+        assertEquals("Vous n'avez pas choisi de boisson parmi les choix proposés\n", output);
+    }
 }
