@@ -307,14 +307,26 @@ class OrderTest {
     }
 
     @Test
-    void Given_Chicken_When_AskAboutMenu_Then_DisplayChickenChoice() {
+    void Given_Chicken_When_AskAboutMenus_Then_DisplayChickenChoice() {
         System.setIn(new ByteArrayInputStream("1\n".getBytes()));
 
         this.order = new Order();
         this.order.askMenu();
 
-        String output[] = this.outContent.toString().replace("\r\n", "\n").split("\n");
+        String[] output = this.outContent.toString().replace("\r\n", "\n").split("\n");
 
         assertEquals("Vous avez choisi comme menu : Poulet", output[5]);
+    }
+
+    @Test
+    void Given_FriesWithAllSidesEnabled_When_AskAboutSides_Then_DisplayFriesChoice() {
+        System.setIn(new ByteArrayInputStream("2\n".getBytes()));
+
+        this.order = new Order();
+        this.order.askSide(true);
+
+        String[] output = this.outContent.toString().replace("\r\n", "\n").split("\n");
+
+        assertEquals("Vous avez choisi comme accompagnement : Frites", output[5]);
     }
 }
