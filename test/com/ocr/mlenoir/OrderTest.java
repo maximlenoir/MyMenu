@@ -9,6 +9,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class OrderTest {
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
@@ -286,5 +287,22 @@ class OrderTest {
         assertEquals("Vous avez choisi de ne pas prendre d'accompagnement", output[11]);
         assertEquals("Vous n'avez pas choisi de boisson parmi les choix proposés", output[17]);
         assertEquals("Vous avez choisi comme boisson : Soda", output[18]);
+    }
+
+    @Test
+    void Given_BadResponseAndResponse1_When_AskAboutCarWithThreeResponses_Then_DisplayErrorAndGoodResponse() {
+        System.setIn(new ByteArrayInputStream("5\n1\n".getBytes()));
+
+        this.order = new Order();
+
+        String[] responses = {"BMW", "Audi", "Mercedes"};
+
+        this.order.askSomething("voiture", responses);
+
+        String[] output = this.outContent.toString().replace("\r\n", "\n").split("\n");
+
+        assertTrue(output[0].contains("voiture"));
+        assertEquals("Vous n'avez pas choisi de voiture parmi les choix proposés", output[5]);
+        assertEquals("Vous avez choisi comme voiture : BMW", output[6]);
     }
 }
