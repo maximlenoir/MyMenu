@@ -6,6 +6,13 @@ class Order {
     private Scanner sc = new Scanner(System.in);
 
     /**
+     * Run asking process for several menus.
+     */
+    void runMenus() {
+
+    }
+
+    /**
      * Run asking process for a menu.
      */
     void runMenu() {
