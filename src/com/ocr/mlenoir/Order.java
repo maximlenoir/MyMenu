@@ -268,4 +268,11 @@ class Order {
             }
         } while (responseIsFalse);
     }
+
+    /**
+     * Display a question about menu in standard input, get response and display it.
+     */
+    void askMenu() {
+        
+    }
 }
