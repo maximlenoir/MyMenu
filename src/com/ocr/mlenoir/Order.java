@@ -57,6 +57,29 @@ class Order {
     }
 
     /**
+     * Display all available sides depending on all sides enable or not.
+     *
+     * - All sides = Vegetables, fries or rice.
+     * - No all sides = Rice or not.
+     *
+     * @param enableAllSides Enable display for all side or not.
+     */
+    private void displayAvailableSide(boolean enableAllSides) {
+        System.out.println("Choix accompagnement");
+
+        if (enableAllSides) {
+            System.out.println("1 - Légumes frais");
+            System.out.println("2 - Frites");
+            System.out.println("3 - Riz");
+        } else {
+            System.out.println("1 - Riz");
+            System.out.println("2 - Aucun accompagnement");
+        }
+
+        System.out.println("Que souhaitez-vous comme accompagnement ?");
+    }
+
+    /**
      * Display a selected side depending on all sides enable or not.
      *
      * - All sides     =  Vegetables, fries or rice.
@@ -104,6 +127,17 @@ class Order {
                     break;
             }
         }
+    }
+
+    /**
+     * Display all available drinks in the restaurant.
+     */
+    private void displayAvailableDrink() {
+        System.out.println("Choix boisson");
+        System.out.println("1 - Eau plate");
+        System.out.println("2 - Eau gazeuse");
+        System.out.println("3 - Soda");
+        System.out.println("Que souhaitez-vous comme boisson");
     }
 
     /**
