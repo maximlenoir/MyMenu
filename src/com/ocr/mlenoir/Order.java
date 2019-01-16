@@ -3,16 +3,17 @@ package com.ocr.mlenoir;
 import java.util.Scanner;
 
 class Order {
+    private Scanner sc = new Scanner(System.in);
+
     /**
      * Run asking process for a menu.
      */
     void runMenu() {
-        Scanner sc = new Scanner(System.in);
         int selectedMenu, selectedSide, selectedDrink;
 
         this.displayAvailableMenu();
 
-        selectedMenu = sc.nextInt();
+        selectedMenu = this.sc.nextInt();
 
         this.displaySelectedMenu(selectedMenu);
 
@@ -20,13 +21,13 @@ class Order {
             case 1:
                 this.displayAvailableSide(true);
 
-                selectedSide = sc.nextInt();
+                selectedSide = this.sc.nextInt();
 
                 this.displaySelectedSide(true, selectedSide);
 
                 this.displayAvailableDrink();
 
-                selectedDrink = sc.nextInt();
+                selectedDrink = this.sc.nextInt();
 
                 this.displaySelectedDrink(selectedDrink);
 
@@ -34,7 +35,7 @@ class Order {
             case 2:
                 this.displayAvailableSide(true);
 
-                selectedSide = sc.nextInt();
+                selectedSide = this.sc.nextInt();
 
                 this.displaySelectedSide(true, selectedSide);
 
@@ -42,13 +43,13 @@ class Order {
             case 3:
                 this.displayAvailableSide(false);
 
-                selectedSide = sc.nextInt();
+                selectedSide = this.sc.nextInt();
 
                 this.displaySelectedSide(false, selectedSide);
 
                 this.displayAvailableDrink();
 
-                selectedDrink = sc.nextInt();
+                selectedDrink = this.sc.nextInt();
 
                 this.displaySelectedDrink(selectedDrink);
 
