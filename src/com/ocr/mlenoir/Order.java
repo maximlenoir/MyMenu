@@ -35,49 +35,17 @@ class Order {
 
             switch (selectedMenu) {
                 case 1:
-                    this.displayAvailableSide(true);
-
-                    do {
-                        selectedSide = this.sc.nextInt();
-
-                        this.displaySelectedSide(true, selectedSide);
-                    } while (selectedSide < 1 || selectedSide > 3);
-
-                    this.displayAvailableDrink();
-
-                    do {
-                        selectedDrink = this.sc.nextInt();
-
-                        this.displaySelectedDrink(selectedDrink);
-                    } while (selectedDrink < 1 || selectedDrink > 3);
+                    this.askSide(true);
+                    this.askDrink();
 
                     break;
                 case 2:
-                    this.displayAvailableSide(true);
-
-                    do {
-                        selectedSide = this.sc.nextInt();
-
-                        this.displaySelectedSide(true, selectedSide);
-                    } while (selectedSide < 1 || selectedSide > 3);
+                    this.askSide(true);
 
                     break;
                 case 3:
-                    this.displayAvailableSide(false);
-
-                    do {
-                        selectedSide = this.sc.nextInt();
-
-                        this.displaySelectedSide(false, selectedSide);
-                    } while (selectedSide < 1 || selectedSide > 2);
-
-                    this.displayAvailableDrink();
-
-                    do {
-                        selectedDrink = this.sc.nextInt();
-
-                        this.displaySelectedDrink(selectedDrink);
-                    } while (selectedDrink < 1 || selectedDrink > 3);
+                    this.askSide(false);
+                    this.askDrink();
 
                     break;
                 default:
