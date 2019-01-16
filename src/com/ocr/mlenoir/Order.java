@@ -232,7 +232,7 @@ class Order {
 
                 System.out.println("Vous avez choisi comme " + category + " : " + responses[choice - 1]);
             } else {
-                System.out.println("Vous n'avez pas choisi d" + (isVowel ? "' " : "e ") + category + " parmi les choix proposés");
+                System.out.println("Vous n'avez pas choisi d" + (isVowel ? "'" : "e ") + category + " parmi les choix proposés");
             }
         } while (responseIsFalse);
     }
