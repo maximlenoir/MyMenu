@@ -28,50 +28,52 @@ class Order {
 
         this.displayAvailableMenu();
 
-        selectedMenu = this.sc.nextInt();
+        do {
+            selectedMenu = this.sc.nextInt();
 
-        this.displaySelectedMenu(selectedMenu);
+            this.displaySelectedMenu(selectedMenu);
 
-        switch (selectedMenu) {
-            case 1:
-                this.displayAvailableSide(true);
+            switch (selectedMenu) {
+                case 1:
+                    this.displayAvailableSide(true);
 
-                selectedSide = this.sc.nextInt();
+                    selectedSide = this.sc.nextInt();
 
-                this.displaySelectedSide(true, selectedSide);
+                    this.displaySelectedSide(true, selectedSide);
 
-                this.displayAvailableDrink();
+                    this.displayAvailableDrink();
 
-                selectedDrink = this.sc.nextInt();
+                    selectedDrink = this.sc.nextInt();
 
-                this.displaySelectedDrink(selectedDrink);
+                    this.displaySelectedDrink(selectedDrink);
 
-                break;
-            case 2:
-                this.displayAvailableSide(true);
+                    break;
+                case 2:
+                    this.displayAvailableSide(true);
 
-                selectedSide = this.sc.nextInt();
+                    selectedSide = this.sc.nextInt();
 
-                this.displaySelectedSide(true, selectedSide);
+                    this.displaySelectedSide(true, selectedSide);
 
-                break;
-            case 3:
-                this.displayAvailableSide(false);
+                    break;
+                case 3:
+                    this.displayAvailableSide(false);
 
-                selectedSide = this.sc.nextInt();
+                    selectedSide = this.sc.nextInt();
 
-                this.displaySelectedSide(false, selectedSide);
+                    this.displaySelectedSide(false, selectedSide);
 
-                this.displayAvailableDrink();
+                    this.displayAvailableDrink();
 
-                selectedDrink = this.sc.nextInt();
+                    selectedDrink = this.sc.nextInt();
 
-                this.displaySelectedDrink(selectedDrink);
+                    this.displaySelectedDrink(selectedDrink);
 
-                break;
-            default:
-                break;
-        }
+                    break;
+                default:
+                    break;
+            }
+        } while (selectedMenu < 1 || selectedMenu > 3);
     }
 
     /**
