@@ -196,7 +196,7 @@ class OrderTest {
         String[] output = this.outContent.toString().replace("\r\n", "\n").split("\n");
 
         assertEquals("Vous avez choisi comme menu : Végétarien", output[5]);
-        assertEquals("Vous avez choisi de ne pas prendre d'accompagnement", output[10]);
+        assertEquals("Vous avez choisi comme accompagnement : Pas d'accompagnement", output[10]);
         assertEquals("Vous avez choisi comme boisson : Eau gazeuse", output[16]);
     }
 
@@ -226,7 +226,7 @@ class OrderTest {
         assertEquals("Vous avez choisi comme menu : Boeuf", output[6]);
         assertEquals("Vous avez choisi comme accompagnement : Légumes frais", output[12]);
         assertEquals("Vous avez choisi comme menu : Végétarien", output[18]);
-        assertEquals("Vous avez choisi de ne pas prendre d'accompagnement", output[23]);
+        assertEquals("Vous avez choisi comme accompagnement : Pas d'accompagnement", output[23]);
         assertEquals("Vous avez choisi comme boisson : Eau gazeuse", output[29]);
     }
 
@@ -284,7 +284,7 @@ class OrderTest {
 
         assertEquals("Vous avez choisi comme menu : Végétarien", output[5]);
         assertEquals("Vous n'avez pas choisi d'accompagnement parmi les choix proposés", output[10]);
-        assertEquals("Vous avez choisi de ne pas prendre d'accompagnement", output[11]);
+        assertEquals("Vous avez choisi comme accompagnement : Pas d'accompagnement", output[11]);
         assertEquals("Vous n'avez pas choisi de boisson parmi les choix proposés", output[17]);
         assertEquals("Vous avez choisi comme boisson : Soda", output[18]);
     }
