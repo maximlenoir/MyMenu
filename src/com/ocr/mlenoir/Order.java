@@ -37,37 +37,47 @@ class Order {
                 case 1:
                     this.displayAvailableSide(true);
 
-                    selectedSide = this.sc.nextInt();
+                    do {
+                        selectedSide = this.sc.nextInt();
 
-                    this.displaySelectedSide(true, selectedSide);
+                        this.displaySelectedSide(true, selectedSide);
+                    } while (selectedSide < 1 || selectedSide > 3);
 
                     this.displayAvailableDrink();
 
-                    selectedDrink = this.sc.nextInt();
+                    do {
+                        selectedDrink = this.sc.nextInt();
 
-                    this.displaySelectedDrink(selectedDrink);
+                        this.displaySelectedDrink(selectedDrink);
+                    } while (selectedDrink < 1 || selectedDrink > 3);
 
                     break;
                 case 2:
                     this.displayAvailableSide(true);
 
-                    selectedSide = this.sc.nextInt();
+                    do {
+                        selectedSide = this.sc.nextInt();
 
-                    this.displaySelectedSide(true, selectedSide);
+                        this.displaySelectedSide(true, selectedSide);
+                    } while (selectedSide < 1 || selectedSide > 3);
 
                     break;
                 case 3:
                     this.displayAvailableSide(false);
 
-                    selectedSide = this.sc.nextInt();
+                    do {
+                        selectedSide = this.sc.nextInt();
 
-                    this.displaySelectedSide(false, selectedSide);
+                        this.displaySelectedSide(false, selectedSide);
+                    } while (selectedSide < 1 || selectedSide > 2);
 
                     this.displayAvailableDrink();
 
-                    selectedDrink = this.sc.nextInt();
+                    do {
+                        selectedDrink = this.sc.nextInt();
 
-                    this.displaySelectedDrink(selectedDrink);
+                        this.displaySelectedDrink(selectedDrink);
+                    } while (selectedDrink < 1 || selectedDrink > 3);
 
                     break;
                 default:
