@@ -55,4 +55,54 @@ class Order {
                 break;
         }
     }
+
+    /**
+     * Display a selected side depending on all sides enable or not.
+     *
+     * - All sides     =  Vegetables, fries or rice.
+     * - No all sides  =  Rice or not.
+     *
+     * @param enableAllSides  Enable display for all side or not.
+     * @param selectedSide    The selected side.
+     */
+    void displaySelectedSide(boolean enableAllSides, int selectedSide) {
+        String selectedSideSentence = "Vous avez choisi comme accompagnement : ";
+        String errorSentence = "Vous n'avez pas choisi d'accompagnement parmi les choix proposés";
+
+        if (enableAllSides) {
+            switch (selectedSide) {
+                case 1:
+                    System.out.println(selectedSideSentence + "Légumes frais");
+
+                    break;
+                case 2:
+                    System.out.println(selectedSideSentence + "Frites");
+
+                    break;
+                case 3:
+                    System.out.println(selectedSideSentence + "Riz");
+
+                    break;
+                default:
+                    System.out.println(errorSentence);
+
+                    break;
+            }
+        } else {
+            switch (selectedSide) {
+                case 1:
+                    System.out.println(selectedSideSentence + "Riz");
+
+                    break;
+                case 2:
+                    System.out.println("Vous avez choisi de ne pas prendre d'accompagnement");
+
+                    break;
+                default:
+                    System.out.println(errorSentence);
+
+                    break;
+            }
+        }
+    }
 }
