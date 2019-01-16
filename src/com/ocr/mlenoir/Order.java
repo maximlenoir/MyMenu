@@ -24,7 +24,7 @@ class Order {
      * Run asking process for a menu.
      */
     void runMenu() {
-        int selectedMenu, selectedSide, selectedDrink;
+        int selectedMenu;
 
         this.displayAvailableMenu();
 
@@ -210,8 +210,10 @@ class Order {
      *
      * @param category   The category of the question.
      * @param responses  Available responses.
+     *
+     * @return The user's choice.
      */
-    void askSomething(String category, String[] responses) {
+    int askSomething(String category, String[] responses) {
         int choice;
         boolean responseIsFalse = true;
         boolean isVowel = "aeiouy".contains(Character.toString(category.charAt(0)));
@@ -235,15 +237,19 @@ class Order {
                 System.out.println("Vous n'avez pas choisi d" + (isVowel ? "'" : "e ") + category + " parmi les choix proposés");
             }
         } while (responseIsFalse);
+
+        return choice;
     }
 
     /**
      * Display a question about menu in standard input, get response and display it.
+     *
+     * @return The user's choice.
      */
-    void askMenu() {
+    int askMenu() {
         String[] menus = {"Poulet", "Boeuf", "Végétarien"};
 
-        this.askSomething("menu", menus);
+        return this.askSomething("menu", menus);
     }
 
     /**
