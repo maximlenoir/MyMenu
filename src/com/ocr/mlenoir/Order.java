@@ -297,6 +297,8 @@ class Order {
      * Display a question about drink in the standard input, get response and display it.
      */
     void askDrink() {
+        String[] drinks = {"Eau plate", "Eau gazeuse", "Soda"};
 
+        this.askSomething("boisson", drinks);
     }
 }
