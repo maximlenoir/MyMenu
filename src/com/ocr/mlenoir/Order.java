@@ -105,4 +105,32 @@ class Order {
             }
         }
     }
+
+    /**
+     * Display a selected drink.
+     *
+     * @param selectedDrink The selected drink.
+     */
+    void displaySelectedDrink(int selectedDrink) {
+        String selectedDrinkSentence = "Vous avez choisi comme boisson : ";
+
+        switch (selectedDrink) {
+            case 1:
+                System.out.println(selectedDrinkSentence + "Eau");
+
+                break;
+            case 2:
+                System.out.println(selectedDrinkSentence + "Eau gazeuse");
+
+                break;
+            case 3:
+                System.out.println(selectedDrinkSentence + "Soda");
+
+                break;
+            default:
+                System.out.println("Vous n'avez pas choisi de boisson parmi les choix proposés");
+
+                break;
+        }
+    }
 }
