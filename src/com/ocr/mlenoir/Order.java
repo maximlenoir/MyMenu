@@ -273,6 +273,8 @@ class Order {
      * Display a question about menu in standard input, get response and display it.
      */
     void askMenu() {
-        
+        String[] menus = {"Poulet", "Boeuf", "Végétarien"};
+
+        this.askSomething("menu", menus);
     }
 }
