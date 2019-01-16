@@ -305,4 +305,16 @@ class OrderTest {
         assertEquals("Vous n'avez pas choisi de voiture parmi les choix proposés", output[5]);
         assertEquals("Vous avez choisi comme voiture : BMW", output[6]);
     }
+
+    @Test
+    void Given_Chicken_When_AskAboutMenu_Then_DisplayChickenChoice() {
+        System.setIn(new ByteArrayInputStream("1\n".getBytes()));
+
+        this.order = new Order();
+        this.order.askMenu();
+
+        String output[] = this.outContent.toString().replace("\r\n", "\n").split("\n");
+
+        assertEquals("Vous avez choisi comme menu : Poulet", output[5]);
+    }
 }
