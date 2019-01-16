@@ -9,17 +9,14 @@ class Order {
      * Run asking process for several menus.
      */
     void runMenus() {
-        int nbMenu;
+        int menuQuantity;
 
         System.out.println("Combien de menu souhaitez-vous commander ?");
 
-        nbMenu = this.sc.nextInt();
+        menuQuantity = this.sc.nextInt();
 
-        while (nbMenu > 0) {
+        for (int i = 0; i < menuQuantity; i++) {
             this.runMenu();
-
-            // syntactic sugar :
-            nbMenu--;
         }
     }
 
