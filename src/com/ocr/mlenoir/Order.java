@@ -56,6 +56,8 @@ class Order {
 
     /**
      * Run asking process for a menu.
+     *
+     * @return A concatenated string that contains the selected menu, side and drink.
      */
     String runMenu() {
         int selectedMenu, selectedSide = -1, selectedDrink = -1;
@@ -294,6 +296,8 @@ class Order {
      * Display a question about side in the standard input, get response and display it.
      *
      * @param enableAllSides Enable display for all side or not.
+     *
+     * @return The user's choice
      */
     int askSide(boolean enableAllSides) {
         if (enableAllSides) {
@@ -307,6 +311,8 @@ class Order {
 
     /**
      * Display a question about drink in the standard input, get response and display it.
+     *
+     * @return The user's choice
      */
     int askDrink() {
         String[] drinks = {"Eau plate", "Eau gazeuse", "Soda"};
