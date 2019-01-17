@@ -3,12 +3,16 @@ package com.ocr.mlenoir;
 import java.util.Scanner;
 
 class Order {
+    String orderSummary = "";
+
     private Scanner sc = new Scanner(System.in);
 
     /**
      * Run asking process for several menus.
      */
     void runMenus() {
+        this.orderSummary += "Résumé de votre commande :%n";
+
         int menuQuantity;
 
         System.out.println("Combien de menu souhaitez-vous commander ?");
@@ -16,6 +20,8 @@ class Order {
         menuQuantity = this.sc.nextInt();
 
         for (int i = 0; i < menuQuantity; i++) {
+            this.orderSummary += "Menu " + (i + 1) + " :%n";
+
             this.runMenu();
         }
     }
@@ -224,7 +230,11 @@ class Order {
             if (choice >= 1 && choice <= responses.length) {
                 responseIsFalse = false;
 
-                System.out.println("Vous avez choisi comme " + category + " : " + responses[choice - 1]);
+                String choiceStr = "Vous avez choisi comme " + category + " : " + responses[choice - 1];
+
+                this.orderSummary = this.orderSummary.concat(choiceStr).concat("%n");
+
+                System.out.println(choiceStr);
             } else {
                 System.out.println("Vous n'avez pas choisi d" + (isVowel ? "'" : "e ") + category + " parmi les choix proposés");
             }
