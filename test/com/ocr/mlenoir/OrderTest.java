@@ -364,4 +364,37 @@ class OrderTest {
 
         assertEquals(1, choice);
     }
+
+    @Test
+    void Given_Response_When_CallingAskQuestion_The_FillOrderSummaryCorrectly() {
+        System.setIn(new ByteArrayInputStream(String.format("1%n").getBytes()));
+
+        this.order = new Order();
+
+        String[] responses = {"BMW", "Audi", "Mercedes"};
+
+        this.order.askSomething("voiture", responses);
+
+        assertEquals("Vous avez choisi comme voiture : BMW%n", this.order.orderSummary);
+    }
+
+    @Test
+    void Given_Responses_When_CallingRunMenus_Then_FillOrderSummaryCorrectly() {
+        System.setIn(new ByteArrayInputStream(String.format("2%n1%n1%n1%n2%n2%n").getBytes()));
+
+        this.order = new Order();
+        this.order.runMenus();
+
+        assertEquals(
+            "Résumé de votre commande :%n" +
+            "Menu 1 :%n" +
+            "Vous avez choisi comme menu : Poulet%n" +
+            "Vous avez choisi comme accompagnement : Légumes frais%n" +
+            "Vous avez choisi comme boisson : Eau plate%n" +
+            "Menu 2 :%n" +
+            "Vous avez choisi comme menu : Boeuf%n" +
+            "Vous avez choisi comme accompagnement : Frites%n",
+            this.order.orderSummary
+        );
+    }
 }
