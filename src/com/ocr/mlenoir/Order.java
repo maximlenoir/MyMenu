@@ -1,5 +1,6 @@
 package com.ocr.mlenoir;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 class Order {
@@ -13,11 +14,22 @@ class Order {
     void runMenus() {
         this.orderSummary += "Résumé de votre commande :%n";
 
-        int menuQuantity;
+        int menuQuantity = 0;
+        boolean responseIsFalse = true;
 
         System.out.println("Combien de menu souhaitez-vous commander ?");
 
-        menuQuantity = this.sc.nextInt();
+        do {
+            try {
+                menuQuantity = this.sc.nextInt();
+
+                responseIsFalse = false;
+            } catch (InputMismatchException e) {
+                sc.next();
+
+                System.out.println("Vous devez saisir un nombre, correspondant au nombre de menus souhaités");
+            }
+        } while (responseIsFalse);
 
         for (int i = 0; i < menuQuantity; i++) {
             this.orderSummary = this.orderSummary.concat("Menu " + (i + 1)).concat(" :%n");
@@ -214,7 +226,7 @@ class Order {
      * @return The user's choice.
      */
     int askSomething(String category, String[] responses) {
-        int choice;
+        int choice = 0;
         boolean responseIsFalse = true;
         boolean isVowel = "aeiouy".contains(Character.toString(category.charAt(0)));
 
@@ -227,7 +239,11 @@ class Order {
         System.out.println("Que souhaitez-vous comme " + category + " ?");
 
         do {
-            choice = this.sc.nextInt();
+            try {
+                choice = this.sc.nextInt();
+            } catch (InputMismatchException e) {
+                sc.next();
+            }
 
             if (choice >= 1 && choice <= responses.length) {
                 responseIsFalse = false;
