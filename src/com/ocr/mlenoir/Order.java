@@ -48,6 +48,8 @@ class Order {
                 Files.write(orderFilePath, String.format(orderLine).getBytes(), APPEND);
             } catch (IOException e) {
                 System.out.println("Oops! Une erreur est survenue. Veuillez réessayer plus tard.");
+                
+                return;
             }
         }
 
