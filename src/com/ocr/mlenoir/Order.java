@@ -20,10 +20,12 @@ class Order {
         menuQuantity = this.sc.nextInt();
 
         for (int i = 0; i < menuQuantity; i++) {
-            this.orderSummary += "Menu " + (i + 1) + " :%n";
+            this.orderSummary = this.orderSummary.concat("Menu " + (i + 1)).concat(" :%n");
 
             this.runMenu();
         }
+
+        System.out.printf(this.orderSummary);
     }
 
     /**
