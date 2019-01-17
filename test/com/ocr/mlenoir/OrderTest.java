@@ -397,4 +397,31 @@ class OrderTest {
             this.order.orderSummary
         );
     }
+
+    @Test
+    void Given_TextResponse_When_CallingAskQuestion_Then_DisplayErrorSentence() {
+        System.setIn(new ByteArrayInputStream(String.format("texte%n1%n").getBytes()));
+
+        this.order = new Order();
+
+        String[] responses = {"BMW", "Audi", "Mercedes"};
+
+        this.order.askSomething("voiture", responses);
+
+        String[] output = this.outContent.toString().replace("\r\n", "\n").split("\n");
+
+        assertEquals("Vous n'avez pas choisi de voiture parmi les choix proposés", output[5]);
+    }
+
+    @Test
+    void Given_BadMenusQuantityInStandardInput_When_RunMenus_Then_DisplayErrorSentence() {
+        System.setIn(new ByteArrayInputStream(String.format("texte%n1%n1%n2%n3%n").getBytes()));
+
+        this.order = new Order();
+        this.order.runMenus();
+
+        String[] output = this.outContent.toString().replace("\r\n", "\n").split("\n");
+
+        assertEquals("Vous devez saisir un nombre, correspondant au nombre de menus souhaités", output[1]);
+    }
 }
