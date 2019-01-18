@@ -1,7 +1,13 @@
 package com.ocr.mlenoir;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+
+import static java.nio.file.StandardOpenOption.APPEND;
 
 class Order {
     String orderSummary = "";
@@ -12,6 +18,8 @@ class Order {
      * Run asking process for several menus.
      */
     void runMenus() {
+        Path orderFilePath = Paths.get("order.csv");
+
         this.orderSummary += "Résumé de votre commande :%n";
 
         int menuQuantity = 0;
@@ -34,7 +42,15 @@ class Order {
         for (int i = 0; i < menuQuantity; i++) {
             this.orderSummary = this.orderSummary.concat("Menu " + (i + 1)).concat(" :%n");
 
-            this.runMenu();
+            String orderLine = this.runMenu();
+
+            try {
+                Files.write(orderFilePath, String.format(orderLine).getBytes(), APPEND);
+            } catch (IOException e) {
+                System.out.println("Oops! Une erreur est survenue. Veuillez réessayer plus tard.");
+                
+                return;
+            }
         }
 
         System.out.printf(this.orderSummary);
@@ -42,28 +58,34 @@ class Order {
 
     /**
      * Run asking process for a menu.
+     *
+     * @return A concatenated string that contains the selected menu, side and drink.
      */
-    void runMenu() {
-        int choice = this.askMenu();
+    String runMenu() {
+        int selectedMenu, selectedSide = -1, selectedDrink = -1;
 
-        switch (choice) {
+        selectedMenu = this.askMenu();
+
+        switch (selectedMenu) {
             case 1:
-                this.askSide(true);
-                this.askDrink();
+                selectedSide = this.askSide(true);
+                selectedDrink = this.askDrink();
 
                 break;
             case 2:
-                this.askSide(true);
+                selectedSide = this.askSide(true);
 
                 break;
             case 3:
-                this.askSide(false);
-                this.askDrink();
+                selectedSide = this.askSide(false);
+                selectedDrink = this.askDrink();
 
                 break;
             default:
                 break;
         }
+
+        return selectedMenu + "," + selectedSide + "," + selectedDrink + "%n";
     }
 
     /**
@@ -276,23 +298,27 @@ class Order {
      * Display a question about side in the standard input, get response and display it.
      *
      * @param enableAllSides Enable display for all side or not.
+     *
+     * @return The user's choice
      */
-    void askSide(boolean enableAllSides) {
+    int askSide(boolean enableAllSides) {
         if (enableAllSides) {
             String[] sides = {"Légumes frais", "Frites", "Riz"};
-            this.askSomething("accompagnement", sides);
+            return this.askSomething("accompagnement", sides);
         } else {
             String[] sides = {"Riz", "Pas d'accompagnement"};
-            this.askSomething("accompagnement", sides);
+            return this.askSomething("accompagnement", sides);
         }
     }
 
     /**
      * Display a question about drink in the standard input, get response and display it.
+     *
+     * @return The user's choice
      */
-    void askDrink() {
+    int askDrink() {
         String[] drinks = {"Eau plate", "Eau gazeuse", "Soda"};
 
-        this.askSomething("boisson", drinks);
+        return this.askSomething("boisson", drinks);
     }
 }
